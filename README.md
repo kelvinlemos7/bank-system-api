@@ -92,6 +92,11 @@ pip install -r requirements.txt
 ```bash
 uvicorn src.app:app --reload
 ```
+ou
+
+```bash
+$env:PYTHONPATH = "src"; uvicorn src.app:app --reload
+```
 
 ### 5️⃣ Acesse a documentação
 
