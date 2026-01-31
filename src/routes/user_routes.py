@@ -8,10 +8,9 @@ from repositories.user_repository import UserRepository
 from schemas.user_schema import UserCreate, UserResponse
 from database import get_db
 
-router = APIRouter()
+router = APIRouter(prefix="/users", tags=["Users"])
 
-
-@router.post("/users", response_model=UserResponse)
+@router.post("/", response_model=UserResponse)
 def create_user(
     user: UserCreate,
     db: Session = Depends(get_db)
@@ -26,7 +25,7 @@ def create_user(
     )
 
 
-@router.get("/users", response_model=List[UserResponse])
+@router.get("/", response_model=List[UserResponse])
 def get_users(db: Session = Depends(get_db)):
     repository = UserRepository(db)
     service = UserService(repository)

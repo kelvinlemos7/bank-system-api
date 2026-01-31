@@ -9,9 +9,9 @@ from repositories.user_repository import UserRepository
 from schemas.account_schema import AccountCreate, AccountResponse
 from database import get_db
 
-router = APIRouter()
+router = APIRouter(prefix="/accounts", tags=["Accounts"])
 
-@router.post("/accounts", response_model=AccountResponse)
+@router.post("/", response_model=AccountResponse)
 def create_account_route(
     account: AccountCreate,
     db: Session = Depends(get_db)
@@ -26,7 +26,7 @@ def create_account_route(
         account.balance
     )
 
-@router.get("/accounts", response_model=List[AccountResponse])
+@router.get("/", response_model=List[AccountResponse])
 def get_accounts_route(db: Session = Depends(get_db)):
     account_repository = AccountRepository(db)
     user_repository = UserRepository(db)
