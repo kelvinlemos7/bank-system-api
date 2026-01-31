@@ -12,6 +12,6 @@ app = FastAPI(title="Bank System API")
 def root():
     return {"message": "Bank System API is running"}
 
-app.include_router(user_router, prefix="/api")     # rotas de usuários
-app.include_router(account_router, prefix="/api")  # rotas de contas
-app.include_router(transaction_router, prefix="/api") # rotas de transações
+app.include_router(user_router, prefix="/api")     
+app.include_router(account_router, prefix="/api")
+app.include_router(transaction_router, prefix="/api")

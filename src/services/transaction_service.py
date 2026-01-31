@@ -26,19 +26,16 @@ class TransactionService:
         destination_account_id: int | None = None
     ):
         try:
-            # 1️⃣ Conta origem
             account = self.account_repository.get_by_id(account_id)
             if not account:
                 raise AccountNotFoundError("Conta não encontrada")
 
             validate_positive_value(amount)
 
-            # 2️⃣ Validação de saldo
             if transaction_type in [TransactionType.WITHDRAW, TransactionType.TRANSFER]:
                 if account.balance < amount:
                     raise InsufficientBalanceError("Saldo insuficiente")
 
-            # 3️⃣ Transferência → validar destino
             destination = None
             if transaction_type == TransactionType.TRANSFER:
                 if not destination_account_id:
@@ -48,7 +45,6 @@ class TransactionService:
                 if not destination:
                     raise AccountNotFoundError("Conta de destino não encontrada")
 
-            # 4️⃣ Regras de negócio
             if transaction_type == TransactionType.DEPOSIT:
                 account.balance += amount
 
@@ -60,10 +56,8 @@ class TransactionService:
                 destination.balance += amount
                 self.db.add(destination)
 
-            # 5️⃣ Persistir saldo da conta origem
             self.db.add(account)
 
-            # 6️⃣ Criar transação
             transaction = Transaction(
                 account_id=account.id,
                 amount=amount,
@@ -73,7 +67,6 @@ class TransactionService:
 
             self.db.add(transaction)
 
-            # 7️⃣ Commit único (atomicidade)
             self.db.commit()
 
             self.db.refresh(transaction)
