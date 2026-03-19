@@ -54,7 +54,7 @@ Route → Controller → Service → Repository → Database
 
 ## 🛠️ Tecnologias Utilizadas
 
-* **Python 3.12**
+* **Python 3.11**
 * **FastAPI**
 * **SQLAlchemy**
 * **Pydantic**
