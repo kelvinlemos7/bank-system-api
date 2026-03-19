@@ -1,7 +1,6 @@
 # 🏦 Bank System API
 
-Uma API REST simples e bem estruturada para simular operações bancárias básicas, desenvolvida com **FastAPI**, **SQLAlchemy** e **MySQL**, seguindo uma arquitetura em camadas (Controller → Service → Repository).
-
+Uma API REST estruturada para simulação de operações bancárias, com foco em boas práticas de arquitetura backend.
 > Projeto focado em **boas práticas**, **organização**, **clareza de regras de negócio** e **evolução futura**.
 
 ---
