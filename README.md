@@ -103,6 +103,13 @@ $env:PYTHONPATH = "src"; uvicorn src.app:app --reload
 * Swagger UI: 👉 [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
 * OpenAPI JSON: 👉 [http://127.0.0.1:8000/openapi.json](http://127.0.0.1:8000/openapi.json)
 
+## 🚀 Como rodar com Docker
+```bash
+docker-compose up --build
+```
+
+Acesse: http://localhost:8000/docs
+
 ---
 
 ## 📌 Endpoints Principais
